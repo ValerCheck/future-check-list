@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link type="stylesheet" rel="application.css"/>
-	<script type="text/javascript" src="engine.js"></script>
+	<link rel="stylesheet" type="text/css" href="application.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+	<script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+	<script src="engine.js"></script>
 </head>
 <body>
-	
+	<h1 id="checkListName">My CheckList</h1>
+	<hr>
+	<div class="content">
+		
+	</div>
+
+	<script id="task-list-template" type="text/x-handlebars-template" >
+		<ul id="task-list"></ul>
+	</script>
+
+	<script id="task-tpl" type="text/x-handlebars-template">
+		<li class="task-entity">
+			<a href="#">{{content}}</a>
+			<input class="task-delete" type="button" value="Delete"></input>
+		</li>
+	</script>
+
 </body>
 </html>
