@@ -9,19 +9,6 @@ $(function() {
 		model: Task
 	});
 
-	/*var taskList = new TaskList();
-
-	taskList.fetch({
-		success: function(tasks){
-			var tasksView = new TaskList({collection: tasks});
-			tasksView.render();
-			$('#taskList').html(tasksView.el);
-		},
-		error: function(tasks, error){
-			console.log(error);
-		}
-	});*/
-
 	var TaskView = Parse.View.extend({
 		tagName: "li",
 		
@@ -31,70 +18,59 @@ $(function() {
 			"click .task-delete" : "clear"
 		},
 
-		initialize : function(){
-			this.model.bind('destroy',this.remove);
-		},
+		initialize : function(){},
 
 		render: function(){
-			console.warn('Render task view: ' + this.model);
 			this.$el.html(this.template(this.model.toJSON()));
-			console.log(this.model);
 			return this;			
 		},
 
 		clear: function(){
-			this.model.destroy();
+			var self = this;
+			this.model.destroy().then(function(){
+				self.remove();
+			});
 		}
 	});
 
 	var UserTasksView = Parse.View.extend({
 		el: '.content',
+
 		initialize: function(){
+
 			var self = this;
+
+			this.input = this.$("#task-add-content");
 			
 			this.$el.html(Handlebars.compile($('#task-list-template').html()));
-			
 			this.tasks = new TaskList;
 			this.tasks.query = new Parse.Query(Task);
-			console.log(this.tasks.length);
-			this.tasks.fetch({
-				success : function(collection){
-					console.log(collection);
-					console.log('length is ' + collection.length);
-					self.addAll();
-				},
-				error : function(collection,error){
-					console.log(error);
-				}
+			this.tasks.query.find().then(function(collection){
+				return self.tasks.fetch();
+			}).then(function(){
+				self.addAll();
 			});
-			
 
 		},
 
 		addTask: function(task){
-			console.log('Task (addTask):');
-			console.log(task);
 			var view = new TaskView({model:task});
-			console.log('TaskView (addTask):');
-			console.log(view);
 			this.$('#task-list').append(view.render().el);
-			console.log('Rendered element (addTask):');
-			console.log(view.render().el);
 		},
 
 		addAll: function(){
-			console.log('Run addAll function!');
 			this.$('#task-list').html("");
-			console.log('Tasks (addAll): ');
-			console.log(this.tasks);
 			
 			var self = this;
 
 			this.tasks.each(function(task){
 				self.addTask(task);
-				console.log("Task: ");
-				console.log(task);
 			});
+		},
+
+		createTaskView: function(e){
+			var self = this;
+
 		}
 	});
 

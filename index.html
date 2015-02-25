@@ -10,6 +10,10 @@
 <body>
 	<h1 id="checkListName">My CheckList</h1>
 	<hr>
+	<div>
+		<button class="task-add" value="Add" >Add</button>
+		<input id="task-add-content" type="text" placeholder="What do you want to do for your future?"></input>
+	</div>
 	<div class="content">
 		
 	</div>
@@ -19,7 +23,7 @@
 	</script>
 
 	<script id="task-tpl" type="text/x-handlebars-template">
-		<li class="task-entity">
+		<li class="task-view">
 			<a href="#">{{content}}</a>
 			<input class="task-delete" type="button" value="Delete"></input>
 		</li>
