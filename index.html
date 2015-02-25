@@ -8,11 +8,24 @@
 	<script src="engine.js"></script>
 </head>
 <body>
-	<h1 id="checkListName">My CheckList</h1>
-	<hr>
-	<div class="content">
-		
+
+	<div id="futureCheckListApp">
+		<div class="title">
+			<h1 id="checkListName">Future Check List</h1>	
+		</div>
+		<hr>
+		<div class="content"></div>
 	</div>
+	
+	<script id="user-login-template" type="text/x-handlebars-template">
+		<div class="login">
+			<form class="login-form">
+				<h2>Log In</h2>
+				<div class="error" style="display:none"></div>
+				<input type="text" id="login-username" placeholder="Username"></input>
+			</form>
+		</div>
+	</script>
 
 	<script id="user-list-template" type="text/x-handlebars-template" >
 		<button id="task-add" value="Add" >Add</button>
