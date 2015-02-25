@@ -23,6 +23,16 @@
 				<h2>Log In</h2>
 				<div class="error" style="display:none"></div>
 				<input type="text" id="login-username" placeholder="Username"></input>
+				<input type="password" id="login-password" placeholder="Password"></input>
+				<button>Log In</button>
+			</form>
+
+			<form class="signup-form">
+				<h2>Sign Up</h2>
+				<div class="error" style="display:none"></div>
+				<input type="text" id="signup-username" placeholder="Username"></input>
+				<input type="password" id="signup-password" placeholder="Password"></input>
+				<button>Sign Up</button>
 			</form>
 		</div>
 	</script>
@@ -31,6 +41,7 @@
 		<button id="task-add" value="Add" >Add</button>
 		<input id="task-add-content" type="text" placeholder="What do you want to do for your future?"></input>
 		<ul id="task-list"></ul>
+		<button class="user-logout">Log out</button>
 	</script>
 
 	<script id="task-tpl" type="text/x-handlebars-template">
