@@ -34,15 +34,21 @@ $(function() {
 	});
 
 	var UserTasksView = Parse.View.extend({
+		
+		events: {
+			"click #task-add" : "createTaskView"
+		},
+
 		el: '.content',
 
 		initialize: function(){
 
 			var self = this;
 
+			//this.bind("createTaskView",this);
+
+			this.$el.html(Handlebars.compile($('#user-list-template').html()));
 			this.input = this.$("#task-add-content");
-			
-			this.$el.html(Handlebars.compile($('#task-list-template').html()));
 			this.tasks = new TaskList;
 			this.tasks.query = new Parse.Query(Task);
 			this.tasks.query.find().then(function(collection){
@@ -70,7 +76,12 @@ $(function() {
 
 		createTaskView: function(e){
 			var self = this;
+			this.tasks.create({
+				content: self.input.val()
+			});
 
+			self.input.val('');
+			self.addAll();
 		}
 	});
 
