@@ -17,7 +17,7 @@ body {
 
 
 
-.login-form {
+.login-form, .signup-form {
 	width: 300px;
 	margin: 0 auto;
 	position: relative;
@@ -29,11 +29,11 @@ body {
 	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-.login-form .login-header {
+.login-form .login-header, .signup-form .signup-header {
 	padding: 40px 30px 30px 30px;
 }
 
-.login-form .login-header h2 {
+.login-form .login-header h2, .signup-form .signup-header h2 {
 	font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size:28px;
@@ -44,18 +44,18 @@ body {
 	margin-bottom: 10px;
 }
 
-.login-form .login-header span {
+.login-form .login-header span, .signup-form .signup-header span {
 	font-size: 11px;
 	line-height: 16px;
 	color: #678889;
 	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
 }
 
-.login-form .login-content {
+.login-form .login-content, .signup-form .signup-content {
 	padding: 0 30px 25px 30px;
 }
 
-#login-username, #login-password {
+#login-username, #login-password, #signup-username, #signup-password {
 	width: 188px;
 	padding: 15px 25px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -71,11 +71,13 @@ body {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
 }
 
-#login-username:hover, #login-password:hover {
+#login-username:hover, #login-password:hover, 
+#signup-username:hover, #signup-password:hover {
 	background: #dfe9ec;
 	color: #414848;
 }
 
+#signup-username:focus, #signup-password:focus,
 #login-username:focus, #login-password:focus {
 	background: #dfe9ec;
 	color: #414848;
@@ -83,6 +85,7 @@ body {
 	box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
 }
 
+#signup-username, #signup-password,
 #login-username, #login-password {
 	transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
@@ -91,6 +94,7 @@ body {
 	-ms-transition: all 0.5s ease;
 }
 
+.signup-form .signup-footer,
 .login-form .login-footer {
 	padding: 25px 30px 40px 30px;
 	overflow: auto;
@@ -104,6 +108,7 @@ body {
 	box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
 }
 
+.signup-form .signup-footer .signup-submit,
 .login-form .login-footer .login-submit {
 	
 	position: relative;
@@ -124,6 +129,7 @@ body {
 	box-shadow: inset 0 0 2px rgba(256,256,256,0.75);
 }
 
+.signup-fotm .signup-footer .signup-submit:focus,
 .login-form .login-footer .login-submit:focus {
 	position: relative;
 	bottom: -1px;
@@ -132,7 +138,27 @@ body {
 	box-shadow: inset 0 1px 6px rgba(256,256,256,0.75);
 }
 
+.signup-form .signup-footer .signup-submit:hover,
 .login-form .login-footer .login-submit:hover {
-	background: #
+	background: #3f9db8;
+	border: 1px solid rgba(256,256,256,0.75);
+
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.signup-form .signup-footer a,
+.signup-form .signup-footer p,
+.login-form .login-footer a {
+	display: inline;
+	margin: 20px 0 0 0;
+	font-family: "Bree Serif";
+	font-size: 15px;
+	text-decoration: none;
+	color: black;
+}
+
+.login-form .login-footer div,
+.signup-form .signup-footer div {
+	margin-top: 20px;
 }
 

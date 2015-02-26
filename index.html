@@ -18,6 +18,7 @@
 	
 	<script id="user-login-template" type="text/x-handlebars-template">
 		<div id="login">
+			
 			<form class="login-form" method="post">
 				<div class="login-header">
 					<h2>Log In</h2>
@@ -32,17 +33,35 @@
 
 				<div class="login-footer">
 					<button class="login-submit">Login</button>
+					<div>
+						<a id="register-link" href="">Register</a>
+					</div>
 				</div>
 				
 			</form>
 
-			<!--<form class="signup-form">
-				<h2>Sign Up</h2>
-				<div class="error" style="display:none"></div>
-				<input type="text" id="signup-username" placeholder="Username"></input>
-				<input type="password" id="signup-password" placeholder="Password"></input>
-				<button>Sign Up</button>
-			</form>-->
+			<form class="signup-form" method="post" style="display:none">
+				<div class="signup-header">
+					<h2>Sign up</h2>
+					<span>Fill out the form below to register in this service.</span>
+				</div>
+
+				<div class="signup-content">
+					<div class="error" style="display:none"></div>
+					<input type="text" id="signup-username" placeholder="Username"></input>
+					<input type="password" id="signup-password" placeholder="Password"></input>
+				</div>
+
+				<div class="signup-footer">
+					<button class="signup-submit">Signup</button>
+					<div>
+						<p>Already registered?</p>
+						<a id="login-link" href="">Login</a>
+					</div>
+				</div>
+				
+			</form>
+
 		</div>
 		<div class="gradient"></div>
 	</script>

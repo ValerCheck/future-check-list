@@ -81,7 +81,7 @@ $(function() {
 			var self = this;
 			console.log(Parse.User.current());
 
-			
+
 
 			if(!self.input.val()) return;
 
@@ -100,7 +100,9 @@ $(function() {
 	var LogInView = Parse.View.extend({
 		events: {
 			"submit form.login-form" : "logIn",
-			"submit form.signup-form" : "signUp"
+			"submit form.signup-form" : "signUp",
+			"click #register-link" : "showSignUpPanel",
+			"click #login-link" : "showLogInPanel"
 		},
 
 		el: ".content",
@@ -143,13 +145,26 @@ $(function() {
 				},
 				error: function(user, error){
 					self.$(".signup-form .error").html(error.message).show();
-					self.$("signup-form button").removeAttr("disabled");
+					self.$(".signup-form button").removeAttr("disabled");
 				}
 			});
 
 			this.$(".signup-form button").attr("disabled","disabled");
 
 			return false;
+		},
+
+		showSignUpPanel: function(){
+			this.$(".login-form").hide();
+			this.$(".signup-form").show();
+			return false;
+		},
+
+		showLogInPanel: function(){
+			this.$('.signup-form').fadeIn('normal');
+			this.$('.signup-form').css('top',15 + 'px');
+			this.$('.signup-form').hide();
+			this.$('.login-form').show();
 		},
 
 		render: function(){
