@@ -80,6 +80,11 @@ $(function() {
 		createTaskView: function(e){
 			var self = this;
 			console.log(Parse.User.current());
+
+			
+
+			if(!self.input.val()) return;
+
 			var newTask = new Task({
 				content: self.input.val(),
 				ACL: new Parse.ACL(Parse.User.current())
