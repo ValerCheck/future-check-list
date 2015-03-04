@@ -67,17 +67,28 @@
 	</script>
 
 	<script id="user-list-template" type="text/x-handlebars-template" >
-		<button id="task-add" value="Add" >Add</button>
-		<input id="task-add-content" type="text" placeholder="What do you want to do for your future?"></input>
-		<ul id="task-list"></ul>
-		<button class="user-logout">Log out</button>
+		
+		<div id="add-button-wrapper">
+			<button id="task-add" value="Add" >Add</button>
+			<input id="task-add-content" type="text" placeholder="What do you want to do for your future?"></input>
+		</div>
+
+		<div id="task-list-wrapper">
+			<ul id="task-list"></ul>
+		</div>
+
+		<div id="logout-wrapper">
+			<button class="user-logout">Log out</button>
+		</div>
 	</script>
 
 	<script id="task-tpl" type="text/x-handlebars-template">
-		<li class="task-view">
-			<a href="#">{{content}}</a>
-			<input class="task-delete" type="button" value="Delete"></input>
-		</li>
+		<div class="task-view">
+			<div class="task-content float_left">{{content}}</div>
+			<div class="task-actions" style="display:none">
+				<div class="task-delete float_right" ></div>
+			</div>
+		</div>
 	</script>
 
 </body>

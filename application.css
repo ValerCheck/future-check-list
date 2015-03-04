@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Loved+by+the+King);
 
 body {
 	margin: 0;
@@ -24,5 +25,103 @@ body {
 
 #deleteButton {
 	display: inline;
+}
+
+#logout-wrapper,
+#add-button-wrapper {
+	position: relative;
+	margin: 0px auto;
+}
+
+#task-list-wrapper {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 40px;
+	margin-bottom:0; 
+
+	color: #777;
+	background: #f6f6f3;
+	box-shadow: 0px 6px 20px hsla(0,0%,0%,.1);
+	margin: 40px auto;
+	position: relative;
+	width: 350px;
+	border: 2px solid #dfdfd3;
+
+	background-image: -webkit-radial-gradient(#dedede 30%, transparent 20%),
+                      -webkit-radial-gradient(#dedede 38%, transparent 24%),
+                      -webkit-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                   hsla(180,85%,45%,.1) 95%, hsla(180,85%,45%,.1) 100%);
+    background-image: -moz-radial-gradient(#d6d5d6 30%, transparent 20%),
+                      -moz-radial-gradient(#cfcfc3 38%, transparent 24%),
+                      -moz-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                hsla(180,75%,50%,.1) 95%, hsla(180,75%,50%,.1) 100%);
+    background-image: radial-gradient(#d6d5d6 30%, transparent 20%),
+                      radial-gradient(#cfcfc3 38%, transparent 24%),
+                      linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                           hsla(180,75%,50%,.1) 95%, hsla(180,75%,50%,.1) 100%);
+
+	background-position: 4px 1px, 4px 0px, 50% 0px;
+	background-repeat: repeat-y, repeat-y, repeat;
+	background-size: 40px 40px, 40px 40px, 40px 40px;
+	padding: 48px 48px 23px 80px;
+}
+
+#task-list-wrapper:after {
+	border-left: 2px solid hsla(0,95%,50%,.1);
+	border-right: 2px solid hsla(0,95%,50%,.1);
+	bottom: 0;
+	content:'';
+	left:60px;
+	position: absolute;
+	top:0;
+	width: 3px;
+}
+
+#task-list-wrapper #task-list {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 40px;
+	margin-bottom: 60px; 
+}
+
+.task-view .task-content {
+	text-decoration: none;
+	color: black;
+	letter-spacing: 2px;
+	font: italic bold 40px/48px 'Loved by the King', cursive;
+	line-height: 30px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.task-view {
+	height: 40px;
+	clear: both;
+}
+
+#logout-wrapper,
+#add-button-wrapper {
+	text-align: center;
+}
+
+.task-delete {
+	background: url('images/delete-icon.png') no-repeat;
+	background-size: 30px 30px;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: center;
+
+	/*float: right;*/
+}
+
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
 }
 

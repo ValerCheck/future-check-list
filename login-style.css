@@ -1,7 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
 body {
-	background: url('images/bg.png');
+	background: url('images/bg.jpg');
+	/*background: #01a5e2;*/
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 	text-align:left;
@@ -14,8 +15,6 @@ body {
 	height: 400px;
 	margin: 70px auto;
 }
-
-
 
 .login-form, .signup-form {
 	width: 300px;

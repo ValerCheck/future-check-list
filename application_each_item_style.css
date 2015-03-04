@@ -1,0 +1,97 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(http://fonts.googleapis.com/css?family=Loved+by+the+King);
+
+body {
+	margin: 0;
+}
+
+#appTitle  {
+	text-align: left;
+	margin: 0;
+	position: relative;
+	width: 100%;
+	height:45px;
+	display:table;
+}
+
+#appTitle h2 {
+	font-family: "Bree Serif", serif;
+	display: table-cell;
+	vertical-align: middle;
+	background: white;
+	height: 45px;
+	padding: 0 100px;
+}
+
+#deleteButton {
+	display: inline;
+}
+
+#task-list {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 30px;
+	margin-bottom:0; 
+
+	color: #777;
+	background: #f6f6f3;
+	box-shadow: 0px 3px 15px hsla(0,0%,0%,.08);
+	margin: 40px auto;
+	position: relative;
+	width: 350px;
+	border: 1px solid #dfdfd3;
+	
+	background-position: 4px 1px, 4px 0px, 50% 0px;
+	background-repeat: repeat-y, repeat-y, repeat;
+	background-size: 30px 30px, 30px 30px, 30px 30px;
+	/*padding: 36px 48px 23px 80px;*/
+}
+
+#task-list:after {
+	border-left: 2px solid hsla(0,95%,50%,.1);
+	border-right: 2px solid hsla(0,95%,50%,.1);
+	bottom: 0;
+	content:'';
+	left:60px;
+	position: absolute;
+	top:0;
+	width: 3px;
+}
+
+/*#task-list-wrapper #task-list {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 30px;
+	margin-bottom:0; 
+}
+
+#task-list-wrapper */
+
+.task-view {
+	padding-left:80px;
+	background-image: -webkit-radial-gradient(#01a5e2 30%, transparent 20%),
+                      -webkit-radial-gradient(#01a5e2 38%, transparent 24%),
+                      -webkit-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                   hsla(180,75%,50%,.1) 95%, hsla(180,75%,50%,.1) 100%);
+    background-image: -moz-radial-gradient(#01a5e2 30%, transparent 20%),
+                      -moz-radial-gradient(#cfcfc3 38%, transparent 24%),
+                      -moz-linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+                                                hsla(180,75%,50%,.1) 95%, hsla(180,75%,50%,.1) 100%);
+	background-image: radial-gradient(#01a5e2 30%, transparent 20%),
+					  radial-gradient(#cfcfc3 38%, transparent 24%),
+					  linear-gradient(top, hsla(0,0%,0%,0) 0%, hsla(0,0%,0%,0) 95%,
+					  					   hsla(180,75%,50%,.1) 95%, hsla(180,75%,50%,.1) 100%);
+	background-size: 30px 30px, 30px 30px, 30px 30px;
+	background-position: 4px 1px, 4px 0px, 50% 0px;
+	background-repeat: repeat-y, repeat-y, repeat;
+}
+
+.task-view a {
+	text-decoration: none;
+	color: black;
+	letter-spacing: 2px;
+	font: italic 24px/30px 'Loved by the King', cursive;
+	line-height: 30px;
+	margin-bottom: 30px;
+}
+

@@ -10,11 +10,14 @@ $(function() {
 	});
 
 	var TaskView = Parse.View.extend({
-		tagName: "li",
 		
+		tagName: "li",
+
 		template: Handlebars.compile($('#task-tpl').html()),
 		
 		events: {
+			"click .task-view" : "showTaskOptions",
+			"focusin .task-view" : "hideTaskOptions",
 			"click .task-delete" : "clear"
 		},
 
@@ -23,6 +26,20 @@ $(function() {
 		render: function(){
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;			
+		},
+
+		showTaskOptions: function(e){
+			if(this.$('.task-actions').css('display') == 'none'){
+				this.$('.task-actions').show();	
+				this.$('.task-view').focus();
+			}			
+		},
+
+		hideTaskOptions : function(e){
+			alert('it\'s calling');
+			if(this.$('.task-actions').css('display') != 'none'){
+				this.$('.task-actions').hide();
+			}
 		},
 
 		clear: function(){
@@ -80,8 +97,6 @@ $(function() {
 		createTaskView: function(e){
 			var self = this;
 			console.log(Parse.User.current());
-
-
 
 			if(!self.input.val()) return;
 
