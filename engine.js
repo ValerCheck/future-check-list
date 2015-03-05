@@ -16,8 +16,8 @@ $(function() {
 		template: Handlebars.compile($('#task-tpl').html()),
 		
 		events: {
-			"click .task-view" : "showTaskOptions",
-			"focusin .task-view" : "hideTaskOptions",
+			"mouseover .task-view" : "showTaskOptions",
+			"mouseout .task-view" : "hideTaskOptions",
 			"click .task-delete" : "clear"
 		},
 
@@ -31,14 +31,14 @@ $(function() {
 		showTaskOptions: function(e){
 			if(this.$('.task-actions').css('display') == 'none'){
 				this.$('.task-actions').show();	
-				this.$('.task-view').focus();
+				this.$('.task-view').css('border-bottom','1px dashed black');
 			}			
 		},
 
 		hideTaskOptions : function(e){
-			alert('it\'s calling');
 			if(this.$('.task-actions').css('display') != 'none'){
 				this.$('.task-actions').hide();
+				this.$('.task-view').css('border-bottom','1px dashed transparent');
 			}
 		},
 

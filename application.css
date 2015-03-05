@@ -44,7 +44,7 @@ body {
 	box-shadow: 0px 6px 20px hsla(0,0%,0%,.1);
 	margin: 40px auto;
 	position: relative;
-	width: 350px;
+	width: 50%;
 	border: 2px solid #dfdfd3;
 
 	background-image: -webkit-radial-gradient(#dedede 30%, transparent 20%),
@@ -88,15 +88,25 @@ body {
 	text-decoration: none;
 	color: black;
 	letter-spacing: 2px;
-	font: italic bold 40px/48px 'Loved by the King', cursive;
-	line-height: 30px;
-	margin-bottom: 10px;
+	font: italic bold 36px/40px 'Loved by the King', cursive;
+	/*line-height: 40px;
+	margin-bottom: 10px;*/
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 80%;
+	margin:0;
 	display: inline-block;
 }
 
 .task-view {
 	height: 40px;
 	clear: both;
+	margin-bottom: 10px; 
+	position: relative;
+	border: 1px solid transparent;
+	/*overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;*/
 }
 
 #logout-wrapper,
@@ -104,18 +114,35 @@ body {
 	text-align: center;
 }
 
+.task-actions {
+	position: absolute;
+	right: 0px;
+}
+
 .task-delete {
 	background: url('images/delete-icon.png') no-repeat;
-	background-size: 30px 30px;
-	height: 30px;
-	width: 30px;
-	cursor: pointer;
-	display: inline-block;
-	vertical-align: center;
-
 	/*float: right;*/
 }
 
+.task-edit {
+	background: url('images/edit-icon.png') no-repeat;
+}
+
+.task-done {
+	background: url('images/done-icon.png') no-repeat;
+}
+
+.task-delete,
+.task-edit,
+.task-done {
+	background-size: 20px 20px;
+	height: 20px;
+	width: 20px;
+	margin: 10px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: center;
+}
 
 .float_left {
 	float: left;
