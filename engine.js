@@ -18,13 +18,22 @@ $(function() {
 		events: {
 			"mouseover .task-view" : "showTaskOptions",
 			"mouseout .task-view" : "hideTaskOptions",
-			"click .task-delete" : "clear"
+			"click .task-delete" : "clear",
+			"click .task-finish" : "finish",
+			"click .task-undone" : "undone"
 		},
 
 		initialize : function(){},
 
 		render: function(){
 			this.$el.html(this.template(this.model.toJSON()));
+			if (this.model.get("done")){
+				this.$('.task-content').css('text-decoration','line-through');
+				this.$('.task-finish').hide();
+				this.$('.task-undone').show();
+			} else {
+				this.$('.task-undone').hide();
+			}
 			return this;			
 		},
 
@@ -40,6 +49,25 @@ $(function() {
 				this.$('.task-actions').hide();
 				this.$('.task-view').css('border-bottom','1px dashed transparent');
 			}
+		},
+
+		finish: function(){
+			var self = this;
+			this.model.set("done",true);
+			this.model.save();
+			this.$('.task-content').css('text-decoration','line-through');
+			this.$('.task-finish').hide();
+			this.$('.task-undone').fadeIn('slow', function(){});
+			
+		},
+
+		undone: function(){
+			var self = this;
+			this.model.set("done",false);
+			this.model.save();
+			this.$('.task-content').css('text-decoration','none');
+			this.$('.task-undone').hide();
+			this.$('.task-finish').fadeIn('fast', function(){});
 		},
 
 		clear: function(){
@@ -84,7 +112,6 @@ $(function() {
 
 		addAll: function(){
 			this.$('#task-list').html("");
-		
 			this.tasks.each(this.addTask);
 		},
 
