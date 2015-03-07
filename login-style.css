@@ -1,7 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
 body {
-	background: url('images/bg.jpg');
+	background: url('images/app-bg-wood.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	/*background: #01a5e2;*/
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;

@@ -72,6 +72,7 @@ $(function() {
 
 		clear: function(){
 			var self = this;
+			this.$el.fadeOut('fast', function() {});
 			this.model.destroy().then(function(){
 				self.remove();
 			});
