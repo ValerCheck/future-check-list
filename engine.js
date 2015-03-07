@@ -82,7 +82,8 @@ $(function() {
 	var UserTasksView = Parse.View.extend({
 		
 		events: {
-			"click #task-add" : "createTaskView",
+			"keypress #task-add-content" : "createOnEnterTaskView",
+			"click #task-add-button" : "createOnClickTaskView",
 			"click .user-logout" : "logout"
 		},
 
@@ -91,8 +92,6 @@ $(function() {
 		initialize: function(){
 
 			var self = this;
-
-			//this.bind("createTaskView",this);
 
 			this.$el.html(Handlebars.compile($('#user-list-template').html()));
 			this.input = this.$("#task-add-content");
@@ -122,16 +121,27 @@ $(function() {
 			delete this;
 		},
 
-		createTaskView: function(e){
+		createOnClickTaskView: function(e){
+			this.createTaskView();
+		},
+
+		createOnEnterTaskView: function(e){
 			var self = this;
-			console.log(Parse.User.current());
+			if (e.keyCode != 13) return;
+			this.createTaskView();
+		},
+
+		createTaskView: function(){
+			var self = this;
 
 			if(!self.input.val()) return;
 
 			var newTask = new Task({
 				content: self.input.val(),
+				done: false,
 				ACL: new Parse.ACL(Parse.User.current())
 			});
+
 			newTask.save().then(function(){
 				self.tasks.add(newTask);
 				self.input.val('');
