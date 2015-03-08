@@ -8,19 +8,51 @@ body {
 #appTitle  {
 	text-align: left;
 	margin: 0;
-	position: relative;
+	position: fixed;
+	top: 0;
 	width: 100%;
 	height:45px;
 	display:table;
+	z-index: 100;
+	background: url('images/wood-strip.jpg');
+	opacity: 0.9;
+}
+
+#current-user {
+	font-family: "Bree Serif", serif;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+	height: 45px;
+	padding: 0 1%;
+	font-size: 20px;
+	width: 35%;
+	color: whitesmoke;
+	text-shadow: 1px 0px 5px #000,-1px 0px 5px #000,0px 1px 5px #000,0px -1px 5px #000;
+}
+
+#logout-button {
+	display: table-cell;
+	cursor: pointer;
+	background: url('images/logout.png');
+	background-size: 40px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 40px;
+}
+
+.content {
+	top: 50px;
+	position: relative;
 }
 
 #appTitle h2 {
 	font-family: "Bree Serif", serif;
 	display: table-cell;
 	vertical-align: middle;
-	background: url('images/wood-strip.jpg');
 	height: 45px;
-	padding: 0 15%;
+	padding: 0 1%;
 	text-shadow: 0 0 10px #fff;
 }
 
@@ -116,6 +148,7 @@ body {
 }
 
 .task-view .task-content {
+	cursor: pointer;
 	text-decoration: none;
 	color: black;
 	letter-spacing: 2px;
@@ -135,6 +168,37 @@ body {
 	position: relative;
 	border: 1px solid transparent;
 	margin-right: 30px;
+}
+
+#task-list .task-view .edit {
+	display: none;
+}
+
+#task-list .task-view.editing .edit {
+	display: block;
+	background: transparent;
+	border: 0px;
+	outline: 0;
+	width: 85%;
+	letter-spacing: 2px;
+	font: italic bold 36px/44px 'Poiret One', cursive;;
+	color: black;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0;
+	color:darkgrey;
+	top: -1px;
+	position: relative;
+	float:left;
+}
+
+#task-list .task-view.editing .task-content {
+	display: none;
+}
+
+#task-list .task-view.editing .task-delete,
+#task-list .task-view.editing .task-finish {
+	display: none;
 }
 
 #logout-wrapper {

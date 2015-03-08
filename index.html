@@ -12,7 +12,11 @@
 <body>
 
 	<div id="futureCheckListApp">
-		<div id="appTitle"><h2>Future Check List</h2></div>
+		<div id="appTitle">
+			<h2>Future Check List</h2>
+			<div id="current-user"></div>
+			<div id="logout-button"></div>
+		</div>
 		<div class="content"></div>
 	</div>
 	
@@ -68,8 +72,6 @@
 
 	<script id="user-list-template" type="text/x-handlebars-template" >
 		
-		
-
 		<div id="task-list-wrapper">
 			<ol id="task-list"></ol>
 			
@@ -79,17 +81,13 @@
 			</div>
 
 		</div>
-
-		<div id="logout-wrapper">
-			<button class="user-logout">Log out</button>
-
-		</div>
 	</script>
 
 	<script id="task-tpl" type="text/x-handlebars-template">
 		
 		<div class="task-view">
 			<div class="task-content float_left">{{content}}</div>
+			<input type="text" class="edit" value="{{content}}"></input>
 			<div class="task-actions" style="display:none">
 				<div class="task-delete float_right" ></div>
 				<div class="task-edit float_right"></div>

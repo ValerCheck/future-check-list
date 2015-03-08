@@ -16,17 +16,23 @@ $(function() {
 		template: Handlebars.compile($('#task-tpl').html()),
 		
 		events: {
-			"mouseover .task-view" : "showTaskOptions",
-			"mouseout .task-view" : "hideTaskOptions",
-			"click .task-delete" : "clear",
-			"click .task-finish" : "finish",
-			"click .task-undone" : "undone"
+			"mouseover .task-view"   : "showTaskOptions",
+			"mouseout .task-view"    : "hideTaskOptions",
+			"click .task-content"    : "toggleTaskContent",
+			"click .task-delete"     : "clear",
+			"click .task-finish"     : "finish",
+			"click .task-undone"     : "undone",
+			"click .task-edit"       : "edit",
+			"dblclick .task-content" : "edit", 
+			"click .finish-edit"     : "update",
+			"keypress .edit"         : "updateOnEnter"
 		},
 
 		initialize : function(){},
 
 		render: function(){
 			this.$el.html(this.template(this.model.toJSON()));
+			this.input = this.$('.edit');
 			if (this.model.get("done")){
 				this.$('.task-content').css('text-decoration','line-through');
 				this.$('.task-finish').hide();
@@ -52,7 +58,6 @@ $(function() {
 		},
 
 		finish: function(){
-			var self = this;
 			this.model.set("done",true);
 			this.model.save();
 			this.$('.task-content').css('text-decoration','line-through');
@@ -62,12 +67,42 @@ $(function() {
 		},
 
 		undone: function(){
-			var self = this;
 			this.model.set("done",false);
 			this.model.save();
 			this.$('.task-content').css('text-decoration','none');
 			this.$('.task-undone').hide();
 			this.$('.task-finish').fadeIn('fast', function(){});
+		},
+
+		toggleTaskContent: function(){
+			if (this.$('.task-content').css('overflow') == "hidden"){
+				this.$('.task-content').css({'overflow':'visible','white-space':'normal','word-wrap':'break-word'});
+			} else {
+				this.$('.task-content').css({'overflow':'hidden','white-space':'nowrap'});
+			}
+		},
+
+		edit: function(){
+			if(this.$el.hasClass('editing')){
+				return;
+			}
+			this.$('.task-edit').addClass('finish-edit');
+			this.$('.task-view').addClass('editing');
+			this.input.focus();
+		},
+
+		updateOnEnter: function(e){
+			if (e.keyCode != 13){
+				return;
+			}
+			this.update();
+		},
+
+		update: function() {
+			this.model.save({content:this.input.val()});
+			this.$('.task-edit').removeClass('finish-edit');
+			this.$('.task-view').removeClass('editing');
+			this.render();
 		},
 
 		clear: function(){
@@ -84,16 +119,16 @@ $(function() {
 		events: {
 			"keypress #task-add-content" : "createOnEnterTaskView",
 			"click #task-add-button" : "createOnClickTaskView",
-			"click .user-logout" : "logout"
+			"click #logout-button" : "logout"
 		},
 
-		el: '.content',
+		el: '#futureCheckListApp',
 
 		initialize: function(){
 
 			var self = this;
 
-			this.$el.html(Handlebars.compile($('#user-list-template').html()));
+			this.$('.content').html(Handlebars.compile($('#user-list-template').html()));
 			this.input = this.$("#task-add-content");
 			this.tasks = new TaskList;
 			this.tasks.query = new Parse.Query(Task);
@@ -102,7 +137,11 @@ $(function() {
 			}).then(function(){
 				self.addAll();
 			});
-
+			var currentUser = Parse.User.current();
+			this.$('#current-user').show();
+			this.$('#logout-button').show();
+			this.$('#current-user').html("You are logged in as: " + currentUser.get("username"));
+			
 		},
 
 		addTask: function(task){
@@ -117,8 +156,11 @@ $(function() {
 
 		logout: function(){
 			Parse.User.logOut();
+			this.$('#current-user').html('');
+			this.$('#current-user').hide();
+			this.$('#logout-button').hide();
 			new LogInView();
-			delete this;
+			delete this.userTasksView;
 		},
 
 		createOnClickTaskView: function(e){
@@ -226,15 +268,22 @@ $(function() {
 	});
 
 	var AppView = Parse.View.extend({
-		el: $("#futureCheckListApp"),
+		
+		el : $("#futureCheckListApp"),
 
 		initialize: function(){
-			if (Parse.User.current()){
+			var currentUser = Parse.User.current();
+			if (currentUser){
+				this.$('#current-user').show();
+				this.$('#logout-button').show();
 				new UserTasksView();
+				this.$('#current-user').html("You are logged in as: " + currentUser.get("username"));
 			} else {
+				this.$('#current-user').hide();
+				this.$('#logout-button').hide();
 				new LogInView();
 			}
-		}
+		},
 	});
 	
 	new AppView();
